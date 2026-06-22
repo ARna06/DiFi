@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+pi# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# vscode
+settings.json
