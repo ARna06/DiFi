@@ -82,8 +82,7 @@ class BinView:
         beta = np.array([grid.E((idx == i).astype(float)) for i in range(len(self.alpha))])
         u = self.alpha[idx] / beta[idx]
         return Oracle(self.kind, "forward", grid, u,
-                      params={"alpha": self.alpha, "beta": beta,
-                              "sum_alpha2_over_beta": float(np.sum(self.alpha ** 2 / beta))})
+                      params={"alpha": self.alpha, "beta": beta, "sum_alpha2_over_beta": float(np.sum(self.alpha ** 2 / beta))})
     
 @dataclass
 class VaRView:
@@ -111,7 +110,7 @@ class ExpectationView:
         lo, hi = -50.0 / grid.s, 50.0 / grid.s
         theta = brentq(f, lo, hi, xtol=1e-12, rtol=1e-12)
         u = np.exp(theta * (grid.z - grid.m))
-        return Oracle("expectation", "forward", grid, u,
+        return Oracle("expectation", "forward", grid, u, 
                       params={"theta": theta, "mu_target": self.mu_target})
  
  
@@ -226,6 +225,4 @@ class ReverseMomentExpView:
             raise ValueError("P2 tilt lost positivity; target outside feasible cone.")
         u = 1.0 / L
         return Oracle("rkl_moment_exp", "reverse", grid, u,
-                      params={"delta": sol[0], "eta": sol[1],
-                              "m1_target": self.m1_target, "m2_target": self.m2_target,
-                              "resid": float(np.hypot(*resid(sol)))})
+                      params={"delta": sol[0], "eta": sol[1], "m1_target": self.m1_target, "m2_target": self.m2_target, "resid": float(np.hypot(*resid(sol)))})
