@@ -1,9 +1,9 @@
 import numpy as np
 from scipy.stats import norm
 
-from generators import (make_grid, BinView, VaRView, ExpectationView, VaRCVaRView, ReverseMomentView, ReverseMomentExpView)
-from importance_sampling import snis_estimate, fixed_weight_snis
-from metrics import ks_vs_oracle, w1_vs_oracle, ks_two_samples
+from .generators import make_grid, BinView, VaRView, ExpectationView, VaRCVaRView, ReverseMomentView, ReverseMomentExpView
+from .importance_sampling import snis_estimate, fixed_weight_snis
+from .metrics import ks_vs_oracle, w1_vs_oracle, ks_two_samples
 
 
 def build_views(m_pnl: float, s_pnl: float, grid):

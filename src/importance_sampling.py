@@ -2,7 +2,7 @@ import numpy as np
 from dataclasses import dataclass, field
 from scipy.optimize import brentq, fsolve
  
-from generators import (BinView, VaRView, ExpectationView, VaRCVaRView, ReverseMomentView, ReverseMomentExpView)
+from .generators import (BinView, VaRView, ExpectationView, VaRCVaRView, ReverseMomentView, ReverseMomentExpView)
  
  
 @dataclass

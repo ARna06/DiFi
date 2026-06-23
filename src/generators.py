@@ -52,11 +52,9 @@ class Oracle:
         gg = np.maximum(self.g, 1e-300)
         if self.family == "forward":           # KL(nu||mu) = int g log(g/f)
             self.kl = float(np.trapezoid(self.g * np.log(gg / f), gr.z))
-        elif self.family == "backward":                                   # KL(mu||nu) = int f log(f/g)
+        else:                                   # KL(mu||nu) = int f log(f/g)
             self.kl = float(np.trapezoid(gr.f * np.log(f / gg), gr.z))
-        else:
-            raise NotImplementedError(f"Unknown family {self.family}")
- 
+
     def cdf_at(self, t):
         return np.interp(t, self.grid.z, self.cdf)
  
